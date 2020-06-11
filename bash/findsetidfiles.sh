@@ -22,10 +22,15 @@
 echo "Setuid files:"
 echo "============="
 find / -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 3
+#second listing
 echo "Setgid files:"
 echo "============="
+#find files and sending errors to dev null
 find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 3
+#formatting
 echo "Displaying 10 largest files with sizes:"
+#find 10 largest files and redirecting errors again to dev null.
+#awk utilized to display desired output
 find / 2>/dev/null -type f -exec ls -l --block-size=M {} + | sort -rh -k 5 | head -n 10 | awk '{print $5, $3, $9}'
 exit
 
