@@ -14,10 +14,12 @@ test -d ~/Pictures || mkdir ~/Pictures
 
 # download a zipfile of pictures to our Pictures directory if it isn't already there - assumes you are online
 test -f ~/Pictures/pics.zip || wget -q -O ~/Pictures/pics.zip http://zonzorp.net/pics.zip
+#identical command as above, except this time with a .tar file
 test -f ~/Pictures/pics2.tar || wget -q -O ~/Pictures/pics2.tar https://zonzorp.net/pics.tgz tarfile
 
 # unpack the downloaded zipfile if it is there, then delete the local copy of the zipfile
 test -f ~/Pictures/pics.zip && unzip -d ~/Pictures -o -q ~/Pictures/pics.zip && rm ~/Pictures/pics.zip
+#much like above, instead extracting tar file instead of zip.
 test -f ~/Pictures/pics2.tar && tar -xf ~/Pictures/pics2.tar -C ~/Pictures && rm ~/Pictures/pics2.tar
 
 # Make a report on what we have in the Pictures directory
