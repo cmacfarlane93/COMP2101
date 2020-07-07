@@ -63,7 +63,7 @@ EOF
 # define the interface being summarized 
 
 #loop for each interface found
-for each in $(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//"); do
+for each in $(ip link | awk -F: '$0 !~ "vir|wl|^[^0-9]"{print $2;getline}'); do
  #setting variable interface to name of found interface for each iteration 
  interface=$each
 # Find an address and hostname for the interface being summarized
